@@ -25,7 +25,8 @@ def collect(run, label):
     log = json.loads(paths[0].read_text())
     tokens = iter(read_jsonl(run / f"{label}-target-tokens.jsonl"))
     samples = {}
-    for sample in log.get("samples") or []:
+    # Inspect lists samples by ID. The target token stream follows serial execution order.
+    for sample in sorted(log.get("samples") or [], key=lambda sample: sample["started_at"]):
         turns = []
         messages = sample["messages"]
         by_id = {message["id"]: index for index, message in enumerate(messages) if message.get("id")}
