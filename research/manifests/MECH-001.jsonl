@@ -1,0 +1,7 @@
+{"path":"owner/mech-001/analysis-plan.md","bytes":4706,"sha256":"0e7650057362ac4d655905c981db11756926741b7b46d67d2efa228a043ef330"}
+{"path":"owner/mech-001/inputs/directions.json","bytes":2085,"sha256":"bb0182e1fc563f3a5d295745d1342f68f3caa821de12222dd4edf9cb8f207f4a"}
+{"path":"owner/mech-001/inputs/panel.json","bytes":6506,"sha256":"0c2685a503dfa0891e339fc4a291e8a31e98cc6779c235e4e915733af823ee9f"}
+{"path":"owner/mech-001/protocol.json","bytes":933,"sha256":"633b510b48690850d9e84ea74c94b829ccb41bc0a27868d27da8852b84add206"}
+{"path":"owner/mech-001/results/freeze.json","bytes":616,"sha256":"63f442c6ac91fbc3ba043b2f576e10872c6adf0eee0c4ab0cd394fd579e0af0b"}
+{"path":"owner/mech-001/run.py","bytes":17037,"sha256":"e4f814ac1f4e56f644b26ea76967a0b3e3fec38fb67d0d738289bfd8a2ed1cdc"}
+{"path":"owner/mech-001/score.py","bytes":3986,"sha256":"9dc8ff9314322533a9ec676b9974eec1b56e17b68301cef14d8a718df8d49e37"}
