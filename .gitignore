@@ -29,3 +29,24 @@ owner/petri/eval/*
 .venv/
 venv/
 research/.registry.lock
+
+# Owner-side checkpoints and model-selection evidence.
+/owner/models/
+/owner/model-selection/results/
+
+!owner/petri/eval/qwen_pairs.py
+!owner/petri/eval/run-qwen-pairs.zsh
+!owner/petri/eval/summarize_qwen_pairs.py
+
+# Run 2 contains an isolated, replaceable editor runtime and local outputs.
+/agent-run2/base/
+/agent-run2/runtime/
+/agent-run2/work/*
+!/agent-run2/work/.gitkeep
+/owner/run2/private/
+/owner/run2/runs/
+/owner/run2/ready.json
+
+# Owner-only mechanistic development inputs and outputs.
+/owner/mech-001/inputs/
+/owner/mech-001/results/
