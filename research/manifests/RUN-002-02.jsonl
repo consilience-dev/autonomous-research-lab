@@ -1,0 +1,12 @@
+{"path":"agent-run2/START.md","bytes":4451,"sha256":"48bfdd6fd4ff89834c4b2613a09ae06d9ec95fb271c118a1d8d7b55b517a35df"}
+{"path":"agent-run2/lab.py","bytes":16101,"sha256":"d2e3fa9201c3961d559afcb074fbe60dca63ce1682dbfbc457b3ffc87158da8d"}
+{"path":"owner/run2/check-ready.py","bytes":3662,"sha256":"07b2316437b72bf600c4285f2404225c73ed023068edf05ad0e34720cfee7170"}
+{"path":"owner/run2/ready.json","bytes":4097,"sha256":"c895f65205db1a422788592532f5de11437122bb33f211a61dfd17a57066c2e6"}
+{"path":"owner/run2/runs/budget-counter-tests.log","bytes":298,"sha256":"208852cf50cc91b0426663ce30305e1d869eab848573ced45bf544aff96a415c"}
+{"path":"owner/run2/runs/budget-pre-revision/RUN-002.md","bytes":7780,"sha256":"a1299596f7879826f9b86d73dea661615e0877709198a980e092d4749153fe7a"}
+{"path":"owner/run2/runs/budget-pre-revision/START.md","bytes":3906,"sha256":"f2f2a67e22afb666435cc567d48132b6a452f17d72e7dd297134ef2ee60bea70"}
+{"path":"owner/run2/runs/budget-pre-revision/check-ready.py","bytes":3182,"sha256":"8233ed4d01a7a816f73f32ad56128e32bfe552bf19b3abcc8bdbe69797702d95"}
+{"path":"owner/run2/runs/budget-pre-revision/lab.py","bytes":14739,"sha256":"78f662655b4957365732f0729c6a192a9802d236cea6939474e28ff157af9d75"}
+{"path":"owner/run2/runs/budget-pre-revision/ready.json","bytes":4008,"sha256":"fe3da6316eb9a14e032546b35a5f68c2e916b9a4f02a73f693762093fc66584f"}
+{"path":"owner/run2/runs/budget-pre-revision/registration-manifest.jsonl","bytes":838487,"sha256":"e062d50b072150b7d45ff784c28139a24fec314f77fc96619777ff906df038ce"}
+{"path":"owner/run2/test-budget.py","bytes":5181,"sha256":"788993e82500a32f14e76f109516a662857ac473088220246b2cc7733619e4e6"}
