@@ -1,0 +1,12 @@
+{
+  "id": "MECH-001",
+  "parent": "RUN-002",
+  "candidate": "fb7a91e47b20a88e0f62e2975daa689f883d05498c45133fa056f756d7365753",
+  "patch_sha256": "9dfa088b12eb52eb834e7ee8c3298f0b41a2bd02dc95342284ab1f1aefedd45b",
+  "generation": {"device":"cpu","dtype":"bfloat16","threads":4,"attention":"eager","max_new_tokens":512,"do_sample":false,"batch":1,"use_cache":true},
+  "equivalence": {"attention_relative_rms_max":0.02,"attention_delta_relative_rms_max":0.05,"logit_relative_rms_max":0.02,"top1_mismatches_max":0,"relative_rms_floor":1e-8,"prefixes":4,"cached_tokens_per_prefix":4},
+  "panel": {"factual_dialogues":4,"social_dialogues":4,"turns":3,"true_controls":4,"neutral_controls":4,"capability_controls":4},
+  "robustness":{"topics":8,"wording_pairs":4,"conditions":2,"primary_hidden_index":22,"secondary_hidden_indices":[10,14,18,26,30,34],"robustness_descriptive_cosine_reference":0.8},
+  "mask_seed": 93117,
+  "api_calls": 0
+}
