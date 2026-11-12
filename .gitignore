@@ -1,0 +1,31 @@
+agent/runtime/
+agent/base/
+agent/work/*
+!agent/work/.gitkeep
+owner/petri/
+owner/verification/
+**/__pycache__/
+
+# Evaluation evidence stays local. Allowlist reusable implementation files.
+!owner/petri/
+owner/petri/*
+!owner/petri/eval/
+owner/petri/eval/*
+!owner/petri/eval/budget.py
+!owner/petri/eval/checkpoints.py
+!owner/petri/eval/pilot.py
+!owner/petri/eval/requirements.lock
+!owner/petri/eval/rubric.json
+!owner/petri/eval/smoke.py
+!owner/petri/eval/summarize.py
+
+# Local secrets, runtime environments, checkpoints, and registry lock.
+.env
+.env.*
+*.pem
+*.key
+*.safetensors
+*.gguf
+.venv/
+venv/
+research/.registry.lock

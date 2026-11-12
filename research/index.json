@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "experiments": [
+    {
+      "id": "RUN-001",
+      "kind": "run",
+      "title": "Gemma 270M direct weight-editing attempt",
+      "status": "interrupted",
+      "registered_at": "2026-11-12T16:01:23+00:00",
+      "started_at": "2026-11-12T07:45:51.237817-06:00",
+      "ended_at": "2026-11-12T08:15:59.475836-06:00",
+      "parents": [],
+      "record": "research/RUN-001.md",
+      "config": {
+        "path": "owner/verification/session.9d9OVPy2/launch.json",
+        "bytes": 2375,
+        "sha256": "637c65537139d6570630e5a0ae6c59142df99c886d1ec9428fac3a84de7901d4"
+      },
+      "resources": {
+        "lab_passes_allocated": 50,
+        "lab_passes_completed": 30,
+        "generation_calls": 26,
+        "measurement_calls": 4,
+        "generation_examples": 908,
+        "measurement_examples": 216,
+        "candidates": 19,
+        "codex_requests": 52,
+        "codex_completed_responses": 51,
+        "codex_input_tokens": 3832493,
+        "codex_cached_input_tokens": 3725696,
+        "codex_output_tokens": 47005,
+        "codex_reasoning_output_tokens": 23244,
+        "wall_seconds": 1807.4456790830009,
+        "exit_status": 1
+      },
+      "manifests": [
+        {
+          "path": "research/manifests/RUN-001.jsonl",
+          "bytes": 952744,
+          "sha256": "8b71297ac92e70b82119249d96d1d197bca1160d86f1204d73f5a74a1cf4355b",
+          "captured_at": "2026-11-12T16:01:25+00:00",
+          "roots": [
+            "agent/base",
+            "agent/work",
+            "owner/verification",
+            "owner/verification/session.9d9OVPy2/launch.json"
+          ],
+          "file_count": 4610
+        }
+      ]
+    },
+    {
+      "id": "EVAL-001",
+      "kind": "eval",
+      "title": "Petri feasibility comparison of Run 1",
+      "status": "completed",
+      "registered_at": "2026-11-12T16:01:25+00:00",
+      "started_at": "2026-11-12T09:25:43.071766-06:00",
+      "ended_at": "2026-11-12T09:44:15.688830-06:00",
+      "parents": [
+        "RUN-001"
+      ],
+      "record": "research/EVAL-001.md",
+      "config": {
+        "path": "owner/petri/eval/runs/pilot-20261112-092534/config.json",
+        "bytes": 7740,
+        "sha256": "fde6e6909615e3903fcc9786380f9d5ed11ed4548b987bf9ed43527077a899f2"
+      },
+      "resources": {
+        "scenario_pairs": 3,
+        "scored_transcripts": 6,
+        "scored_target_replies": 30,
+        "original_cutoffs": 3,
+        "edited_cutoffs": 8,
+        "paid_request_attempts": 43,
+        "reported_usage_responses": 41,
+        "api_input_tokens": 206277,
+        "api_output_tokens": 8849,
+        "estimated_api_cost_usd": 0.14286315,
+        "guard_accounted_usd": 0.3274431499999999,
+        "spending_guard_usd": 2
+      },
+      "manifests": [
+        {
+          "path": "research/manifests/EVAL-001.jsonl",
+          "bytes": 7483,
+          "sha256": "e2b5de0ca21ab4387fc8122e0e1079a13dcb7519aeb7591b5e7d2e4843f044b8",
+          "captured_at": "2026-11-12T16:01:26+00:00",
+          "roots": [
+            "agent/base",
+            "agent/work/final",
+            "owner/petri/eval/local-smoke.json",
+            "owner/petri/eval/runs/pilot-20261112-092534",
+            "owner/petri/eval/runs/pilot-20261112-092534/config.json"
+          ],
+          "file_count": 48
+        }
+      ]
+    }
+  ]
+}
