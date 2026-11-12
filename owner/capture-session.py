@@ -29,8 +29,9 @@ def write_json(path, value):
 
 
 class Archive:
-    def __init__(self, directory):
+    def __init__(self, directory, limit=LIMIT):
         self.directory = directory
+        self.limit = limit
         self.objects = directory / "objects"
         self.objects.mkdir()
         self.index = directory / "artifacts.jsonl"
@@ -38,7 +39,7 @@ class Archive:
 
     def store(self, header, read):
         remaining = header["bytes"]
-        if not isinstance(remaining, int) or not 0 <= remaining <= LIMIT:
+        if not isinstance(remaining, int) or not 0 <= remaining <= self.limit:
             raise ValueError("invalid payload size")
         digest = hashlib.sha256()
         with NamedTemporaryFile(dir=self.objects, delete=False) as temporary:
@@ -212,6 +213,7 @@ def main():
     parser.add_argument("--run-dir", type=Path, required=True)
     parser.add_argument("--work", type=Path, required=True)
     parser.add_argument("--prompt", type=Path, required=True)
+    parser.add_argument("--artifact-limit", type=int, choices=(LIMIT, 4 * 1024**3), default=LIMIT)
     parser.add_argument("--expect-model")
     parser.add_argument("--expect-effort")
     parser.add_argument("command", nargs=argparse.REMAINDER)
@@ -232,7 +234,7 @@ def main():
     fifo = endpoint / "records.fifo"
     os.mkfifo(fifo)
     endpoint_fd = os.open(endpoint, os.O_DIRECTORY | os.O_NOFOLLOW)
-    archive = Archive(directory)
+    archive = Archive(directory, args.artifact_limit)
     audit = ModelAudit(directory, args.expect_model, args.expect_effort) if args.expect_model else None
     write_json(directory / "launch.json", {"argv": command, "launcher_cwd": os.getcwd(),
                                              "prompt": str(args.prompt), "started_at": time.time()})
