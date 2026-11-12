@@ -96,6 +96,329 @@
           "file_count": 48
         }
       ]
+    },
+    {
+      "id": "EVAL-002",
+      "kind": "eval",
+      "title": "Qwen2.5-3B-Instruct local target selection",
+      "status": "completed",
+      "registered_at": "2026-11-12T16:30:13+00:00",
+      "started_at": "2026-11-12T16:23:59.322903+00:00",
+      "ended_at": "2026-11-12T16:28:08.841779+00:00",
+      "parents": [
+        "RUN-001",
+        "EVAL-001"
+      ],
+      "record": "research/EVAL-002.md",
+      "config": {
+        "path": "owner/model-selection/results/eval-002/protocol.json",
+        "bytes": 2120,
+        "sha256": "095f50748cad660cff9a1ecb06a4ff8279341f4234283dd68d62e1104835caf3"
+      },
+      "resources": {
+        "paid_api_calls": 0,
+        "api_cost_usd": 0,
+        "cases_per_checkpoint": 24,
+        "behavioral_generations": 48,
+        "neutral_smoke_generations": 4,
+        "qwen_peak_rss_bytes": 6517915648,
+        "gemma_peak_rss_bytes": 1440923648,
+        "qwen_baseline_output_tokens": 1359,
+        "gemma_baseline_output_tokens": 492
+      },
+      "manifests": [
+        {
+          "path": "research/manifests/EVAL-002.jsonl",
+          "bytes": 5450,
+          "sha256": "e8197b499b9e2378672d81171360123ee3d19532e499176b3fde2e34e9cb73a5",
+          "captured_at": "2026-11-12T16:30:15+00:00",
+          "roots": [
+            "agent/base/source.json",
+            "agent/work/baseline_run.json",
+            "agent/work/calls/534ad4c8d37b409e84400c7e6f89e2bf/examples.jsonl",
+            "owner/model-selection/results/eval-002",
+            "owner/model-selection/results/eval-002/protocol.json",
+            "owner/models/qwen2.5-3b-instruct/LICENSE",
+            "owner/models/qwen2.5-3b-instruct/README.md",
+            "owner/models/qwen2.5-3b-instruct/config.json",
+            "owner/models/qwen2.5-3b-instruct/generation_config.json",
+            "owner/models/qwen2.5-3b-instruct/merges.txt",
+            "owner/models/qwen2.5-3b-instruct/model-00001-of-00002.safetensors",
+            "owner/models/qwen2.5-3b-instruct/model-00002-of-00002.safetensors",
+            "owner/models/qwen2.5-3b-instruct/model.safetensors.index.json",
+            "owner/models/qwen2.5-3b-instruct/source.json",
+            "owner/models/qwen2.5-3b-instruct/tokenizer.json",
+            "owner/models/qwen2.5-3b-instruct/tokenizer_config.json",
+            "owner/models/qwen2.5-3b-instruct/vocab.json"
+          ],
+          "file_count": 35
+        }
+      ]
+    },
+    {
+      "id": "EVAL-003",
+      "kind": "eval",
+      "title": "Qwen cap and sustained-pressure follow-up",
+      "status": "completed",
+      "registered_at": "2026-11-12T16:37:14+00:00",
+      "started_at": "2026-11-12T16:37:22.381317+00:00",
+      "ended_at": "2026-11-12T16:56:10.911399+00:00",
+      "parents": [
+        "EVAL-002"
+      ],
+      "record": "research/EVAL-003.md",
+      "config": {
+        "path": "owner/model-selection/results/eval-003/protocol.json",
+        "bytes": 3321,
+        "sha256": "c0d1205bb8ecd6d9b765121fc9be20f882c80baefebfafd12c6396fd41f32a0d"
+      },
+      "resources": {
+        "fixed_generations": 48,
+        "pressure_generations": 18,
+        "pressure_scenarios": 6,
+        "generated_tokens": 5599,
+        "qwen_peak_rss_bytes": 6611271680,
+        "paid_api_calls": 0,
+        "api_cost_usd": 0
+      },
+      "manifests": [
+        {
+          "path": "research/manifests/EVAL-003.jsonl",
+          "bytes": 462,
+          "sha256": "1d823ac37c9ab7eb15d77b2a4b635d40c443a5231b5b3a4e5333e549787dce1d",
+          "captured_at": "2026-11-12T16:37:14+00:00",
+          "roots": [
+            "owner/model-selection/results/eval-003/cases.json",
+            "owner/model-selection/results/eval-003/pressure-cases.json",
+            "owner/model-selection/results/eval-003/protocol.json"
+          ],
+          "file_count": 3
+        },
+        {
+          "path": "research/manifests/EVAL-003-02.jsonl",
+          "bytes": 4484,
+          "sha256": "b5f9fed5071ffbbf26bf1375175d30bab2b967caffcbb15c668fef9416696a6c",
+          "captured_at": "2026-11-12T16:57:10+00:00",
+          "roots": [
+            "owner/model-selection/results/eval-003"
+          ],
+          "file_count": 28
+        }
+      ]
+    },
+    {
+      "id": "EVAL-004",
+      "kind": "eval",
+      "title": "Stock Qwen paired Petri pressure feasibility pilot",
+      "status": "completed",
+      "registered_at": "2026-11-12T17:08:51+00:00",
+      "started_at": "2026-11-12T17:10:44.573274+00:00",
+      "ended_at": "2026-11-12T17:54:52.607804+00:00",
+      "parents": [
+        "EVAL-003"
+      ],
+      "record": "research/EVAL-004.md",
+      "config": {
+        "path": "owner/petri/eval/runs/eval-004/config.json",
+        "bytes": 3342,
+        "sha256": "ed3e1dd8beabd5fa6326a732139d7d379c18a306f0d65b428c38c25560704cbc"
+      },
+      "resources": {
+        "scenario_pairs": 3,
+        "completed_conversations": 6,
+        "target_replies": 30,
+        "target_input_tokens": 15749,
+        "target_output_tokens": 5365,
+        "target_length_cutoffs": 0,
+        "paid_api_requests": 36,
+        "api_input_tokens": 182768,
+        "api_output_tokens": 8377,
+        "estimated_api_cost_usd": 0.16475125,
+        "guard_usd": 2,
+        "guard_accounted_usd": 0.16475125
+      },
+      "manifests": [
+        {
+          "path": "research/manifests/EVAL-004.jsonl",
+          "bytes": 1344,
+          "sha256": "dd5aa76998b03f7daa53f54a0cf99388886d8f70da43165f2e115a6c1458d79d",
+          "captured_at": "2026-11-12T17:08:51+00:00",
+          "roots": [
+            "owner/petri/eval/runs/eval-004/config.json",
+            "owner/petri/eval/runs/eval-004/rubric.json",
+            "owner/petri/eval/runs/eval-004/scenarios.json",
+            "owner/petri/eval/runs/eval-004/source"
+          ],
+          "file_count": 9
+        },
+        {
+          "path": "research/manifests/EVAL-004-02.jsonl",
+          "bytes": 6106,
+          "sha256": "ff09173cdead77d7272e1572c551f377ba8c29cfee8e84ffde48f73539163c4b",
+          "captured_at": "2026-11-12T17:56:15+00:00",
+          "roots": [
+            "owner/petri/eval/runs/eval-004"
+          ],
+          "file_count": 38
+        }
+      ]
+    },
+    {
+      "id": "RUN-002",
+      "kind": "run",
+      "title": "Qwen2.5-3B-Instruct direct weight editing",
+      "status": "completed",
+      "registered_at": "2026-11-12T18:29:25+00:00",
+      "started_at": "2026-11-12T19:09:43.606487+00:00",
+      "ended_at": "2026-11-12T20:20:10.333606+00:00",
+      "parents": [
+        "RUN-001",
+        "EVAL-003",
+        "EVAL-004"
+      ],
+      "record": "research/RUN-002.md",
+      "config": {
+        "path": "owner/run2/ready.json",
+        "bytes": 4097,
+        "sha256": "c895f65205db1a422788592532f5de11437122bb33f211a61dfd17a57066c2e6"
+      },
+      "resources": {
+        "planned_lab_calls": 50,
+        "completed_lab_calls": 24,
+        "completed_generation_calls": 15,
+        "completed_measurement_calls": 9,
+        "planned_generation_examples": 192,
+        "charged_generation_examples": 192,
+        "exploration_generation_examples": 136,
+        "confirmation_generation_examples": 56,
+        "emitted_generation_rows": 184,
+        "planned_measurement_examples": 128,
+        "charged_measurement_examples": 124,
+        "candidate_count": 6,
+        "exported": false,
+        "research_editor_launches": 1,
+        "heldout_model_generations": 0,
+        "paid_api_calls": 0,
+        "elapsed_seconds": 4226.727,
+        "codex_requests": 93,
+        "codex_completed_responses": 91,
+        "exit_status": 0
+      },
+      "manifests": [
+        {
+          "path": "research/manifests/RUN-002.jsonl",
+          "bytes": 838562,
+          "sha256": "ae088b6a1f5718bdad4e083fe12cf660f1b02aa74c9e7246a8904e511676ed05",
+          "captured_at": "2026-11-12T18:29:38+00:00",
+          "roots": [
+            "agent-run2/audit",
+            "agent-run2/base",
+            "agent-run2/lab",
+            "agent-run2/weights.py",
+            "owner/capture-session.py",
+            "owner/run2/holdout-protocol.md",
+            "owner/run2/holdout.py",
+            "owner/run2/private/panel.json",
+            "owner/run2/runs/astra-probe.gfTrhEG5",
+            "owner/run2/runs/budget-pre-revision/START.md",
+            "owner/run2/runs/budget-pre-revision/lab.py",
+            "owner/run2/runs/budget-pre-revision/ready.json",
+            "owner/run2/runs/isolation-check.txt",
+            "owner/run2/runs/technical",
+            "owner/run2/runs/technical-retry"
+          ],
+          "file_count": 4194
+        },
+        {
+          "path": "research/manifests/RUN-002-02.jsonl",
+          "bytes": 1653,
+          "sha256": "dfffa161f484f89126ebd2ff01b7d647d153ab57d58cb392cc8cb471e104fb2f",
+          "captured_at": "2026-11-12T19:07:58+00:00",
+          "roots": [
+            "agent-run2/START.md",
+            "agent-run2/lab.py",
+            "owner/run2/check-ready.py",
+            "owner/run2/ready.json",
+            "owner/run2/runs/budget-counter-tests.log",
+            "owner/run2/runs/budget-pre-revision",
+            "owner/run2/test-budget.py"
+          ],
+          "file_count": 12
+        },
+        {
+          "path": "research/manifests/RUN-002-03.jsonl",
+          "bytes": 898527,
+          "sha256": "6df9da8d5f95f6502a4664ab0d981bd88e46ffc365674c02cffe74f1aadc24de",
+          "captured_at": "2026-11-12T20:33:54+00:00",
+          "roots": [
+            "agent-run2/work",
+            "owner/run2/audit",
+            "owner/run2/runs/session.EQpI1oDM"
+          ],
+          "file_count": 4274
+        }
+      ]
+    },
+    {
+      "id": "MECH-001",
+      "kind": "mech",
+      "title": "Qwen steering and feature-removal decomposition",
+      "status": "completed",
+      "registered_at": "2026-11-12T20:51:35+00:00",
+      "started_at": "2026-11-12T20:51:36.202617+00:00",
+      "ended_at": "2026-11-12T21:18:48.070134+00:00",
+      "parents": [
+        "RUN-002"
+      ],
+      "record": "research/MECH-001.md",
+      "config": {
+        "path": "owner/mech-001/protocol.json",
+        "bytes": 933,
+        "sha256": "633b510b48690850d9e84ea74c94b829ccb41bc0a27868d27da8852b84add206"
+      },
+      "resources": {
+        "behavior_conditions": 5,
+        "behavior_generations": 180,
+        "output_tokens": 2688,
+        "length_cutoffs": 0,
+        "masked_reply_records": 96,
+        "direction_measurements": 64,
+        "technical_forwards": 120,
+        "peak_process_rss_bytes": 6490570752,
+        "paid_api_calls": 0,
+        "api_cost_usd": 0,
+        "editor_launches": 0,
+        "holdout_generations": 0
+      },
+      "manifests": [
+        {
+          "path": "research/manifests/MECH-001.jsonl",
+          "bytes": 912,
+          "sha256": "d99968d3a7ab9303bd2a4b1dfa179b0970440ec377f6ee4102a4f930a3346a42",
+          "captured_at": "2026-11-12T20:51:35+00:00",
+          "roots": [
+            "owner/mech-001/analysis-plan.md",
+            "owner/mech-001/inputs",
+            "owner/mech-001/protocol.json",
+            "owner/mech-001/results/freeze.json",
+            "owner/mech-001/run.py",
+            "owner/mech-001/score.py"
+          ],
+          "file_count": 7
+        },
+        {
+          "path": "research/manifests/MECH-001-02.jsonl",
+          "bytes": 3519,
+          "sha256": "9b7b7724382539ec10ac73d3f857929cc11f226531cdc64630d70f5e4a8e567f",
+          "captured_at": "2026-11-12T21:20:07+00:00",
+          "roots": [
+            "owner/mech-001/README.md",
+            "owner/mech-001/results",
+            "owner/mech-001/verify-results.py"
+          ],
+          "file_count": 25
+        }
+      ]
     }
   ]
 }

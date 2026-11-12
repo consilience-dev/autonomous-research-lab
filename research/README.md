@@ -24,7 +24,7 @@ python3 -B research/registry.py seal RUN-002 --status completed \
 python3 -B research/registry.py verify
 ```
 
-The verifier rehashes referenced artifacts, validates the manifest hashes and record relationships, and checks local Markdown link targets. It checks the captured files even when additional files are later added to an artifact root. The two historical inventories cover both original storage and existing owner snapshots. Local runtimes are rebuildable using the dependency locks. The project brief remains an owner-controlled chat attachment outside the repository.
+The verifier rehashes referenced artifacts, validates the manifest hashes and record relationships, and checks local Markdown link targets. It checks the captured files even when additional files are later added to an artifact root. The inventories cover both original storage and existing owner snapshots, including the pinned stock Qwen checkpoint and owner-side model-selection results. Local runtimes are rebuildable using the dependency locks. The project brief remains an owner-controlled chat attachment outside the repository.
 
 For each new experiment, fill in the generated record and append a milestone to [TIMELINE.md](../TIMELINE.md). Append only warranted observations or dated corrections to [FINDINGS.md](../FINDINGS.md), and record methodological changes in [DECISIONS.md](../DECISIONS.md). A new intervention or evaluation gets a new ID. A rerun that only recovers failed samples can remain an explicitly identified attempt under the original evaluation ID. Preserve both raw logs. Amend interpretations with a dated note and evidence while retaining the prior conclusion. Keep manifests and frozen configuration snapshots intact.
 
