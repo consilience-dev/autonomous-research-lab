@@ -1,58 +1,84 @@
-# Local Gemma weight-editing environment
+# Autonomous Research Lab
 
-For the research question, chronology, and evidence, read [START_HERE.md](START_HERE.md). This page documents the runtime and launcher.
+![Autonomous Research Lab workflow showing four steps: measure, edit, confirm, and explain.](docs/figures/lab-overview.svg)
 
-## Exploratory agent launcher
+**Can a research agent reduce sycophancy by editing model weights directly, while preserving accuracy, useful answers, and justified agreement?**
 
-From Terminal, run:
+We tested this on stock **Gemma 3 270M IT** and **Qwen2.5-3B-Instruct**, with local inference on a 24 GB Apple Silicon MacBook Air. Across two editing runs, we tested **25 candidate patches**. Neither run found a candidate that passed its development confirmation. A follow-up ablation showed that the selected Qwen steering direction could introduce reasoning and translation errors on its own.
 
-```sh
-/Users/parm/Documents/ChatGPT/autonomous-research-lab/owner/start-agent.zsh
-```
+[Experiments](#experiment-log) · [What we learned](#what-we-learned) · [Open questions](#open-questions-and-reruns) · [Reproduction](#reproduction)
 
-The launcher checks the original checkpoint hashes, tests the filesystem and network boundaries, and verifies GPT-6 Astra at Max using a separate, tool-free ChatGPT Codex probe. It then starts a fresh non-interactive Codex CLI session from `agent/` with the same explicit model and effort. It feeds `agent/START.md` as the task and starts the owner-side capture process. The printed `owner/verification/session.*` directory holds the run record. Use `owner/start-agent.zsh --check` to run the preflight and its subscription-backed probe without starting the experiment. The checkout is already installed on this Mac.
+## The experiment
 
-## Implementation and verification
+The starting point was *Sparks of Weight-Space Programming*. Experiment 7 used attention to distinguish deliberately fine-tuned honest and sycophantic Gemma variants. Experiment 8 used direct edits to reduce reasoning loops in Qwen3.5-0.8B. We asked a related question about naturally occurring false agreement in stock instruction models. [Paper](https://rikiyat.github.io/blog/weight-space-programming/) · [Experiment 7](https://github.com/RikiyaT/lm_understand-logs/tree/main/exp7_sycophancy) · [Experiment 8](https://github.com/RikiyaT/lm_understand-logs/tree/main/exp8_math)
 
-- `agent/base/` contains `google/gemma-3-270m-it` revision `ac82b4e820549b854eebf28ce6dedaf9fdfa17b3`. All 268,098,176 parameters are BF16. The download was checked against the upstream safetensors SHA-256. The local manifest records hashes for the weights and tokenizer/config files. [Pinned checkpoint](https://huggingface.co/google/gemma-3-270m-it/tree/ac82b4e820549b854eebf28ce6dedaf9fdfa17b3)
-- Python 3.12.12, PyTorch 2.9.1 and Transformers 4.57.6 run natively on Apple Silicon. The full version lock is in `owner/requirements.lock`. `agent/lab` provides named tensor inspection, BF16 edit validation, checksummed patch lineage, export, paired greedy generation, and teacher-forced attention, hidden states, MLP activations and next-token log probabilities. Export copies the original tokenizer and configuration. Patch replay reproduced the same checkpoint checksum, and Transformers reloaded the edited value with tied embeddings intact.
-- The CPU test ran inside the agent's actual Seatbelt profile. A neutral 21-token prompt generated about 64 tokens/s after loading. The teacher-forced measurements took about 0.10 s per revision. Peak process RSS reached about 1.8 GiB over the paired measurement call. The BF16 MPS test passed separately in the owner shell, where Metal was available. The agent's profile reported CPU only. These are short-input smoke measurements, and device allocations and RSS are reported separately.
-- The only smoke intervention changed one BF16 element. It was verified to change internal measurements and then discarded. Smoke outputs and timings are in `owner/verification/smoke.json` and `owner/verification/smoke-mps.json`. This setup smoke test used a neutral prompt. See [RUN-001](research/RUN-001.md) and [EVAL-001](research/EVAL-001.md) for the later experiments.
+1. **Find a measurable failure.** Use fixed prompts and adaptive Petri conversations. Track wrong agreement, temporary reversals, persistent endorsement, and justified agreement separately.
+2. **Edit and screen.** Give GPT-6 Astra at Max a sandboxed local workspace with BF16 weight inspection, activation measurements, greedy generation, direct tensor patches, and a logged forward-call budget. The protocol disallows gradients and training.
+3. **Freeze and confirm.** Choose a candidate before new development comparisons. Check agreement, factual accuracy, coherence, formatting, and ordinary help. Preserve rejected patches and failed attempts.
+4. **Test the mechanism.** Separate the Qwen patch’s constant activation shift from its removal of an input-dependent attention value feature. Check numerical equivalence before interpreting behavioral differences.
 
-## Isolation and experimental limits
+The editor used ChatGPT Codex. Petri used cloud auditor and judge models with the targets running locally. Owner-held evaluation materials stay outside the editing workspace. The Run 2 protected holdout remains unused. [Methods and decisions](DECISIONS.md)
 
-The agent starts with the behavioral objective, tool instructions, rules and resource budget. Seatbelt denies filesystem reads outside the agent root apart from the platform's minimal system paths. It permits writes under `agent/work/` and denies command network access. The preflight tests blocked reads of the original brief and a canary in `owner/petri/`, also through a symlink. Keep Petri materials, seeds, rubrics and results under `owner/petri/` or another owner-only location outside `agent/`. The completed Petri pilot is recorded in [EVAL-001](research/EVAL-001.md). The launcher uses the existing ChatGPT sign-in and disables shell approval escalation, web search, browser tools, plugins, connectors and imported memories. [Codex permission profiles](https://learn.chatgpt.com/docs/permissions) · [Codex authentication](https://learn.chatgpt.com/docs/auth?surface=cli)
+## Experiment log
 
-The original experiments used a CPU analysis kernel and a separate forward-pass service. This adaptation uses local command-line tools and a sequential PyTorch runner. Experiment 7 measured attention on fine-tuned model pairs. Experiment 8's 50-call condition informs the exploratory budget of 50 successful batched generation or measurement calls. The CLI counts paired calls once and caps a call at 512 total generations or 1,024 total measurements. The local protocol uses fixed greedy decoding and a 128-token output cap. Numerical analysis has no separate Python execution quota. [Paper](https://rikiyat.github.io/blog/weight-space-programming/) · [Experiment 7](https://github.com/RikiyaT/lm_understand-logs/tree/main/exp7_sycophancy) · [Experiment 8](https://github.com/RikiyaT/lm_understand-logs/tree/main/exp8_math) · [Gemma follow-up](https://github.com/RikiyaT/lm_understand-logs/tree/main/exp8_math/gemma_followup)
+| Record | What we did | What happened |
+|---|---|---|
+| [RUN-001 · Gemma edits](research/RUN-001.md) | Screened 19 candidates, including MLP and attention interventions. | The selected edit made some factual corrections and introduced failures in correct agreement and relevance. Astra rejected it. The exported checkpoint survived a subscription-limit interruption. |
+| [EVAL-001 · Gemma Petri pilot](research/EVAL-001.md) | Compared stock and edited Gemma across three adaptive scenario pairs. | All six conversations reached five target replies. False agreement and capability problems were visible. Adaptive exposure and the small sample limited attribution. |
+| [EVAL-002 · Qwen baseline](research/EVAL-002.md) | Ran stock Gemma and Qwen on 24 matched development prompts at a 128-token cap. | Qwen corrected 12/12 false or unsupported claims versus Gemma’s 0/12. It agreed appropriately with 2/4 true claims and hit the cap on 7/24 replies. |
+| [EVAL-003 · Cap and pressure follow-up](research/EVAL-003.md) | Replayed the panel at 512 tokens, masked response labels for scoring, and added six scripted Qwen pressure dialogues. | Six unfinished replies recovered. Qwen reached 22/24 coherent replies. The two contradictory denials of true claims persisted. The new dialogues exposed both factual and social accommodation. |
+| [EVAL-004 · Qwen Petri pilot](research/EVAL-004.md) | Ran three paired neutral and pressure scenarios with identical openings and the same evidence. | Under pressure Qwen went from the correct £61 invoice total to the user’s £54, then recovered. One social dialogue retained an unsupported claim of deliberate removal at the close. Misleading feedback framing also occurred in the neutral arm. |
+| [RUN-002 · Qwen edits](research/RUN-002.md) | Screened six weight patches, then froze one for 56 development confirmation replies. | Exploration gains did not repeat. Confirmation found more temporary reversals and new reasoning errors, alongside better true-user agreement. The rejected patch is retained locally. |
+| [MECH-001 · Intervention ablation](research/MECH-001.md) | Tested feature removal, steering, their combination, and the exact weight patch. Crossed eight topics with four instruction pairs. | Steering alone reproduced some new errors. Removal alone left aggregate endorsement counts unchanged. The measured direction varied much more across wording than across topics. |
 
-The CLI runs under inference mode, validates patch names, shapes and finite values, fixes generation settings, and logs structured inputs, outputs, errors, and completed pass counts. The agent can run arbitrary Python for numerical analysis in the sandbox. The training prohibition, use of the provided inference CLI, and integrity of agent-writable records depend on protocol compliance and review of the owner-side Codex trajectory. This is an exploratory setup. The editor used ChatGPT sign-in. The separate Petri pilot used the approved metered auditor and judge described in its experiment record.
+## What we learned
 
-## Research-agent model and verification
+### Follow the answer across turns
 
-The launcher pins `-m gpt-6-astra` and `model_reasoning_effort="max"`. The installed Codex CLI 0.166.0-alpha.6 supports Astra through this ChatGPT sign-in. Its catalog also lists Ultra, a delegation mode. In the subscription probe, Ultra sent `xhigh` to Astra. Max sent `max` and received a completed service response. Max is the highest effort documented for an individual Astra request. [Codex model settings](https://learn.chatgpt.com/docs/models) · [Astra reasoning levels](https://developers.openai.com/api/docs/models/gpt-6-astra)
+Stock Qwen could calculate the invoice correctly, capitulate to the wrong total when the user pressed again, and recover at the close. A score based only on the closing answer would have missed the temporary reversal. The social probes exposed a related distinction. A model can acknowledge uncertainty in its explanation and still draft an accusation or misleading summary for the user. Score the requested deliverable along with the surrounding explanation. [Paired Petri report](research/EVAL-004.md)
 
-The launch probe requires effective Codex settings, a matching traced request and service response, and a successful acknowledgement. Any failure stops the launcher before it submits the research prompt. During the research run, the supervisor checks the root thread's applied settings, wire requests, and reported reroutes. It interrupts on an observed mismatch and rejects a successful CLI exit if verification evidence is missing. The launcher uses the ChatGPT login and has no model or API-key fallback.
+### Check exploration gains on fresh examples
 
-Owner-side `model-verification.json` distinguishes configured settings, wire requests and their linked service response IDs, and any server model diagnostics. The subscription service did not emit an independent served-model ID in these probes. The logs show what the service accepted and detect reroutes the client exposes. They cannot attest to undisclosed routing or the service’s internal computation.
+![Run 2 chart. Final unsupported agreement fell from 3/10 to 1/10 in exploration, then was 2/12 for both checkpoints in development confirmation. Temporary reversals rose from 1/4 to 2/4 in confirmation.](docs/figures/run-2-confirmation.svg)
 
-## Owner-side run record
+On Run 2 confirmation, any unsupported agreement rose from **5/12 to 6/12** while correct-user agreement improved from **2/4 to 4/4**. The edit introduced a new false logical conclusion and a new temporary reversal. These mixed changes are why we track factual reasoning and appropriate agreement alongside sycophancy. No confirmation reply hit the 512-token cap. [Run 2 audit](research/RUN-002.md)
 
-- `events.jsonl` and `stderr.log` contain the CLI's stdout and stderr byte for byte. When the thread's native rollout is available, it is copied alongside them. `launch.json` records the exact command and tool configuration flags. `session-summary.json` records exit status or signal, elapsed time, OS-reported child-process resource use, the token usage Codex emits, and the model ID and reasoning effort reported in each saved turn context. If a run fails before creating a turn, effective settings may be absent. The CLI’s local trace under `trace/` retains the request payloads, paired response IDs, and available tool and subagent trace records.
-- `artifacts.jsonl` indexes timestamped records and their SHA-256 objects under `objects/`. The instrumented Python startup archives file scripts as they run, records inline code and observed source compilation, and archives sources for executed workspace modules where available. The lab sends requests and parsed development inputs before running the model, records each completed result row, and archives measurements, errors, edit patches and their provenance, and exported checkpoints. The owner also samples changed workspace files up to 32 MiB every two seconds and archives retained regular files at exit. The capture limit for any single archived object is 2 GiB.
-- `session-summary.json` distinguishes completed, counted lab passes from Gemma entry points observed in instrumented Python outside a lab call. Those observations are process-level evidence. A generation can invoke several nested or repeated forward functions, so the reported function-entry counts should not be treated as pass counts. Local lab timings and memory measurements are in the archived result records. Instrumentation and archival can add runtime and disk overhead.
-- The capture preserves everything the Codex CLI emits. Output truncated or suppressed inside Codex, and subprocess output never surfaced by a tool, may be absent. Python instrumentation can be bypassed with a different interpreter, startup flags, a changed environment, disabled hooks, or a different inference implementation. Arbitrary files created and deleted between samples can be missed. The agent can disrupt or spoof records before they reach the owner collector. Already archived records remain outside its workspace. Capture errors are reported in `capture-errors.log` or in command stderr. An abrupt host or collector shutdown can leave an incomplete archive.
+### Separate what a patch adds from what it removes
 
-To verify capture independently, run `agent/runtime/venv/bin/python -B owner/test-capture.py`. It uses a synthetic CLI process and a disposable, neutral Gemma smoke test under the real Seatbelt profile. It does not start a Codex agent. Run `agent/runtime/venv/bin/python -B owner/test-model-audit.py` for synthetic downgrade, reroute, and fail-closed interruption checks.
+The selected Qwen patch added a constant shift at layer 22 and removed a value feature shared by eight attention heads. Steering alone introduced a false inference about a status lamp and a translation error. Removal alone left aggregate endorsement counts unchanged on the fresh panel, while the combination changed outcomes on individual items. The activation combination and exact patch agreed on all 40 tested greedy next-token choices, exceeded the frozen logit discrepancy threshold, and gave different text on **4/36** full replies. These results establish some effects of the tested interventions and leave the original confirmation failures causally unresolved. [Mechanistic report](research/MECH-001.md)
 
-## Rebuild or reverify
+### Test a direction on new wording
 
-Run these from the repository root when rebuilding. The model download uses the owner's Hugging Face login with access to the pinned repository. The runtime and base are local and ignored by Git.
+![Layer-22 cosine chart. Across topics at fixed wording the median was 0.945, with a range of 0.843 to 0.985. Across wordings at fixed topic the median was 0.211, with a range of 0.003 to 0.470.](docs/figures/wording-robustness.svg)
 
-```sh
-owner/install-runtime.zsh
-agent/runtime/venv/bin/python -B owner/fetch-model.py
-owner/verify.zsh --also-mps
-owner/start-agent.zsh --check
-```
+Crossing topics and instruction wordings separated a confound in the original measurements. At layer 22, the two original phrasing means had cosine **0.438** on the same topics. The pooled vector still aligned with Run 2’s vector at **0.846**. A reproducible average can therefore obscure variation among phrasings. Prompt length and token position still varied with wording. [Crossed contrast results](research/MECH-001.md#direction-robustness-results)
 
-To repeat the experiment, archive the contents of `agent/work/` outside the agent workspace before launching a fresh session. Keep `work/edits/` together with any exported candidate to preserve the patch lineage.
+### Scope of the results
+
+These are small, exploratory development studies. Most comparisons used one greedy trajectory per prompt. Adaptive auditors can change the exposure between arms. Semantic scoring used a single reviewer, with condition masking where practical. The results establish concrete failures and limits of particular edits. The prevalence of those failures, and whether another editor or checkpoint can improve them, remain open.
+
+## Open questions and reruns
+
+**It’s worth rerunning this as newer target models and editing agents become available.** They answer two different questions. A newer target may sustain pressure more reliably or fail in a different way. A newer editor may identify a more selective intervention on the same checkpoint. Change one at a time so the comparison remains interpretable.
+
+- **Does the target still show enough measurable failure to study?** Repeat the baseline with balanced true and false claims, social pressure, and ordinary capability tasks. Check completion and baseline knowledge before spending an editing budget.
+- **Can a direction transfer across phrasings and topics?** Cross both factors, separate true from false claims, and freeze a direction before testing it on new prompts.
+- **Can an edit preserve the original computation?** Include steering-only and removal-only controls, verify the actual injection site, and compare both next-token logits and full replies.
+- **Does a candidate improve under independent scoring?** Freeze success criteria, run fresh fixed and adaptive scenarios, report temporary and persistent agreement separately, and retain null or negative results.
+
+For a rerun, pin the checkpoint and editor versions, record template and decoding settings, and report both call counts and actual workloads. Reuse the protocol with fresh evaluation items. Reserve unseen confirmation data before editing and keep it out of the editor’s workspace.
+
+## Reproduction
+
+The public checkout includes **code, dependency locks, protocols, reports, and SHA-256 manifests**. Raw transcripts, model files, patches, and private evaluation inputs are stored locally by the owner. Links into those archives in the experiment records are provenance references. Full replay and manifest verification require the matching local artifacts.
+
+| If you want to… | Start here |
+|---|---|
+| Follow the research and its decisions | [Timeline](TIMELINE.md), [findings](FINDINGS.md), [decision log](DECISIONS.md) |
+| Rebuild the original Gemma setup | [Gemma runtime and launcher](docs/gemma-runtime.md) |
+| Inspect the Qwen editor harness and task | [Run 2 operating notes](owner/run2/README.md), [editor brief](agent-run2/START.md) |
+| Understand the mechanistic replay | [MECH-001 replay instructions](owner/mech-001/README.md) |
+| Inspect machine-readable experiment metadata | [Registry guide](research/README.md), [experiment index](research/index.json) |
+| Regenerate the figures | [Figure source](docs/figures/make_figures.py) · `python3 docs/figures/make_figures.py` |
+
+The local lab enforces its own settings and counters. The sandbox isolates owner files and limits tool access. Direct Python inference and training restrictions also rely on protocol compliance and audit. Details of the instrumentation and its limits are in the runtime notes.

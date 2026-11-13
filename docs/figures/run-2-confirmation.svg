@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 353" width="960" height="353" role="img" aria-labelledby="title desc">
+<title id="title">Run 2 exploration and confirmation</title>
+<desc id="desc">Final unsupported agreement fell from 3 of 10 to 1 of 10 during exploration and was 2 of 12 for both models in confirmation. Temporary reversals rose from 1 of 4 to 2 of 4.</desc>
+<g font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<rect x="0" y="0" width="960" height="353" rx="24" fill="#0c1727"/>
+<text x="42" y="53" fill="#f1f7ff" font-size="34" font-weight="750" text-anchor="start">The exploration gain did not repeat</text>
+<text x="43" y="86" fill="#a7bbd2" font-size="21" font-weight="400" text-anchor="start">RUN-002  /  Cases with final unsupported agreement</text>
+<rect x="42" y="116" width="419" height="174" rx="14" fill="#132339" stroke="#34506b"/>
+<text x="60" y="151" fill="#f1f7ff" font-size="23" font-weight="700" text-anchor="start">Exploration</text>
+<text x="60" y="178" fill="#a7bbd2" font-size="17" font-weight="400" text-anchor="start">10 pressure cases</text>
+<text x="60" y="219" fill="#f1f7ff" font-size="18" font-weight="650" text-anchor="start">Base</text>
+<rect x="122" y="202" width="15" height="18" rx="3" fill="#6de9ce"/>
+<rect x="142" y="202" width="15" height="18" rx="3" fill="#6de9ce"/>
+<rect x="162" y="202" width="15" height="18" rx="3" fill="#6de9ce"/>
+<rect x="182" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="202" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="222" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="242" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="262" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="282" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="302" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<text x="439" y="219" fill="#6de9ce" font-size="21" font-weight="750" text-anchor="end">3/10</text>
+<text x="60" y="259" fill="#f1f7ff" font-size="18" font-weight="650" text-anchor="start">Edit</text>
+<rect x="122" y="242" width="15" height="18" rx="3" fill="#b7a8ff"/>
+<rect x="142" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="162" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="182" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="202" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="222" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="242" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="262" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="282" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="302" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<text x="439" y="259" fill="#b7a8ff" font-size="21" font-weight="750" text-anchor="end">1/10</text>
+<rect x="499" y="116" width="419" height="174" rx="14" fill="#132339" stroke="#34506b"/>
+<text x="517" y="151" fill="#f1f7ff" font-size="23" font-weight="700" text-anchor="start">Development confirmation</text>
+<text x="517" y="178" fill="#a7bbd2" font-size="17" font-weight="400" text-anchor="start">12 pressure cases</text>
+<text x="517" y="219" fill="#f1f7ff" font-size="18" font-weight="650" text-anchor="start">Base</text>
+<rect x="579" y="202" width="15" height="18" rx="3" fill="#6de9ce"/>
+<rect x="599" y="202" width="15" height="18" rx="3" fill="#6de9ce"/>
+<rect x="619" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="639" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="659" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="679" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="699" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="719" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="739" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="759" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="779" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="799" y="202" width="15" height="18" rx="3" fill="#34506b"/>
+<text x="896" y="219" fill="#6de9ce" font-size="21" font-weight="750" text-anchor="end">2/12</text>
+<text x="517" y="259" fill="#f1f7ff" font-size="18" font-weight="650" text-anchor="start">Edit</text>
+<rect x="579" y="242" width="15" height="18" rx="3" fill="#b7a8ff"/>
+<rect x="599" y="242" width="15" height="18" rx="3" fill="#b7a8ff"/>
+<rect x="619" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="639" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="659" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="679" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="699" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="719" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="739" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="759" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="779" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<rect x="799" y="242" width="15" height="18" rx="3" fill="#34506b"/>
+<text x="896" y="259" fill="#b7a8ff" font-size="21" font-weight="750" text-anchor="end">2/12</text>
+<text x="44" y="325" fill="#ffc681" font-size="19" font-weight="650" text-anchor="start">Confirmation also found more temporary reversals: 1/4 → 2/4.</text>
+</g></svg>

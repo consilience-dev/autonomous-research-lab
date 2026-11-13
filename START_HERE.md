@@ -16,7 +16,7 @@ We count sycophancy when agreement or excessive validation overrides evidence or
 2. Compare each edit with the same base checkpoint under matched prompts and decoding. Include false claims, true claims, and ordinary tasks. Retain failed interventions as evidence.
 3. Freeze a selected edit before internal confirmation. Compare archived checkpoints in a separate owner-side evaluation with matched settings and judge criteria. Treat adaptive scenario transcripts as different realizations of the same scenario, and keep feasibility evidence separate from future confirmation.
 
-The current implementation uses an offline Seatbelt workspace, Python, and an inference CLI. It inherits the paper's counted-call idea, with a 50-call exploratory condition. Direct Python access means the forward-call guard and training prohibition also depend on protocol compliance. The audit can inspect observed commands, patches, and model calls. [Technical setup](README.md) · [Decision log](DECISIONS.md)
+The current implementation uses an offline Seatbelt workspace, Python, and an inference CLI. It inherits the paper's counted-call idea, with a 50-call exploratory condition. Direct Python access means the forward-call guard and training prohibition also depend on protocol compliance. The audit can inspect observed commands, patches, and model calls. [Technical setup](docs/gemma-runtime.md) · [Decision log](DECISIONS.md)
 
 ## Experiments and current evidence
 
@@ -45,5 +45,5 @@ Qwen2.5-3B-Instruct passed the technical screen and the 512-token follow-up capa
 
 - [Chronology](TIMELINE.md), [findings](FINDINGS.md), and [methodological decisions](DECISIONS.md)
 - [Experiment registry and preservation workflow](research/README.md) and [machine-readable index](research/index.json)
-- [Runtime and owner launcher documentation](README.md)
+- [Gemma runtime and launcher documentation](docs/gemma-runtime.md) · [Qwen operating notes](owner/run2/README.md)
 - [Editing-agent brief](agent/START.md), a deliberately narrow task prompt. Owner-facing records and evaluation material belong outside this workspace.

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 332" width="960" height="332" role="img" aria-labelledby="title desc">
+<title id="title">Autonomous Research Lab</title>
+<desc id="desc">Research workflow: inspect weights, apply direct patches, confirm behavior, and separate intervention components.</desc>
+<g font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<rect x="0" y="0" width="960" height="332" rx="24" fill="#0c1727"/>
+<text x="44" y="66" fill="#f1f7ff" font-size="46" font-weight="750" text-anchor="start">Autonomous Research Lab</text>
+<text x="46" y="105" fill="#a7bbd2" font-size="25" font-weight="400" text-anchor="start">Direct weight edits for reducing sycophancy</text>
+<text x="46" y="136" fill="#6de9ce" font-size="19" font-weight="650" text-anchor="start">Gemma 3 270M IT  /  Qwen2.5-3B-Instruct</text>
+<rect x="45" y="168" width="205" height="132" rx="13" fill="#132339" stroke="#34506b"/>
+<text x="60" y="194" fill="#6de9ce" font-size="17" font-weight="700" text-anchor="start">01</text>
+<text x="60" y="228" fill="#f1f7ff" font-size="25" font-weight="700" text-anchor="start">Measure</text>
+<text x="60" y="258" fill="#a7bbd2" font-size="16" font-weight="400" text-anchor="start">Inspect weights and</text>
+<text x="60" y="280" fill="#a7bbd2" font-size="16" font-weight="400" text-anchor="start">record activations.</text>
+<rect x="267" y="168" width="205" height="132" rx="13" fill="#132339" stroke="#34506b"/>
+<text x="282" y="194" fill="#b7a8ff" font-size="17" font-weight="700" text-anchor="start">02</text>
+<text x="282" y="228" fill="#f1f7ff" font-size="25" font-weight="700" text-anchor="start">Edit</text>
+<text x="282" y="258" fill="#a7bbd2" font-size="16" font-weight="400" text-anchor="start">Apply direct patches</text>
+<text x="282" y="280" fill="#a7bbd2" font-size="16" font-weight="400" text-anchor="start">to a frozen base.</text>
+<rect x="489" y="168" width="205" height="132" rx="13" fill="#132339" stroke="#34506b"/>
+<text x="504" y="194" fill="#ffc681" font-size="17" font-weight="700" text-anchor="start">03</text>
+<text x="504" y="228" fill="#f1f7ff" font-size="25" font-weight="700" text-anchor="start">Confirm</text>
+<text x="504" y="258" fill="#a7bbd2" font-size="16" font-weight="400" text-anchor="start">Check new conversations</text>
+<text x="504" y="280" fill="#a7bbd2" font-size="16" font-weight="400" text-anchor="start">and capability controls.</text>
+<rect x="711" y="168" width="205" height="132" rx="13" fill="#132339" stroke="#34506b"/>
+<text x="726" y="194" fill="#6de9ce" font-size="17" font-weight="700" text-anchor="start">04</text>
+<text x="726" y="228" fill="#f1f7ff" font-size="25" font-weight="700" text-anchor="start">Explain</text>
+<text x="726" y="258" fill="#a7bbd2" font-size="16" font-weight="400" text-anchor="start">Separate steering from</text>
+<text x="726" y="280" fill="#a7bbd2" font-size="16" font-weight="400" text-anchor="start">feature removal.</text>
+</g></svg>

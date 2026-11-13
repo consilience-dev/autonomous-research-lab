@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 369" width="960" height="369" role="img" aria-labelledby="title desc">
+<title id="title">Layer-22 direction robustness</title>
+<desc id="desc">Across topics at fixed wording the median cosine was .945, range .843 to .985. Across wordings at fixed topic the median was .211, range .003 to .470.</desc>
+<g font-family="system-ui, -apple-system, Segoe UI, sans-serif">
+<rect x="0" y="0" width="960" height="369" rx="24" fill="#0c1727"/>
+<text x="42" y="55" fill="#f1f7ff" font-size="34" font-weight="750" text-anchor="start">Wording changed the measured direction</text>
+<text x="43" y="87" fill="#a7bbd2" font-size="21" font-weight="400" text-anchor="start">MECH-001  /  Layer-22 cosine similarity</text>
+<path d="M382.0 121L382.0 278" fill="none" stroke="#34506b" stroke-width="1.5"/>
+<text x="382.0" y="304" fill="#a7bbd2" font-size="17" font-weight="400" text-anchor="middle">0.00</text>
+<path d="M505.5 121L505.5 278" fill="none" stroke="#34506b" stroke-width="1.5"/>
+<text x="505.5" y="304" fill="#a7bbd2" font-size="17" font-weight="400" text-anchor="middle">0.25</text>
+<path d="M629.0 121L629.0 278" fill="none" stroke="#34506b" stroke-width="1.5"/>
+<text x="629.0" y="304" fill="#a7bbd2" font-size="17" font-weight="400" text-anchor="middle">0.50</text>
+<path d="M752.5 121L752.5 278" fill="none" stroke="#34506b" stroke-width="1.5"/>
+<text x="752.5" y="304" fill="#a7bbd2" font-size="17" font-weight="400" text-anchor="middle">0.75</text>
+<path d="M876.0 121L876.0 278" fill="none" stroke="#34506b" stroke-width="1.5"/>
+<text x="876.0" y="304" fill="#a7bbd2" font-size="17" font-weight="400" text-anchor="middle">1.00</text>
+<text x="44" y="164" fill="#f1f7ff" font-size="23" font-weight="700" text-anchor="start">Same wording</text>
+<text x="44" y="189" fill="#a7bbd2" font-size="18" font-weight="400" text-anchor="start">Different topics</text>
+<text x="337" y="169" fill="#6de9ce" font-size="30" font-weight="750" text-anchor="end">0.945</text>
+<rect x="798.442" y="160" width="70.14799999999991" height="8" rx="4" fill="#6de9ce"/>
+<circle cx="848.8299999999999" cy="164" r="9" fill="#6de9ce" stroke="#0c1727" stroke-width="2"/>
+<text x="44" y="234" fill="#f1f7ff" font-size="23" font-weight="700" text-anchor="start">Same topic</text>
+<text x="44" y="259" fill="#a7bbd2" font-size="18" font-weight="400" text-anchor="start">Different wordings</text>
+<text x="337" y="239" fill="#ffc681" font-size="30" font-weight="750" text-anchor="end">0.211</text>
+<rect x="383.482" y="230" width="230.69799999999992" height="8" rx="4" fill="#ffc681"/>
+<circle cx="486.234" cy="234" r="9" fill="#ffc681" stroke="#0c1727" stroke-width="2"/>
+<text x="43" y="344" fill="#a7bbd2" font-size="17" font-weight="400" text-anchor="start">Dot = median   ·   Line = observed range   ·   8 topics × 4 wording pairs</text>
+</g></svg>
