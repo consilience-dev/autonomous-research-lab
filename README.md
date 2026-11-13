@@ -1,5 +1,3 @@
-# Autonomous Research Lab
-
 ![Autonomous Research Lab workflow showing four steps: measure, edit, confirm, and explain.](docs/figures/lab-overview.svg)
 
 **Can a research agent reduce sycophancy by editing model weights directly, while preserving accuracy, useful answers, and justified agreement?**
